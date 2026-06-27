@@ -851,6 +851,40 @@ function PLRCalculator() {
   );
 }
 
+function TransferenciaCalculator() {
+  const [salary, setSalary] = useState(2500);
+  const [result, setResult] = useState<Record<string, string> | null>(null);
+
+  function calc() {
+    const adicional = salary * 0.25;
+    setResult({
+      'Salário Base': formatBRL(salary),
+      'Adicional 25%': formatBRL(adicional),
+      'Total com Adicional': formatBRL(salary + adicional),
+    });
+  }
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Salário</label>
+        <input type="number" className="input-field" value={salary} onChange={e => setSalary(Number(e.target.value))} />
+      </div>
+      <button className="btn-primary w-full" onClick={calc}>Calcular Transferência</button>
+      {result && (
+        <div className="mt-4 space-y-2">
+          {Object.entries(result).map(([k, v]) => (
+            <div key={k} className={`flex justify-between items-center py-2 px-3 rounded-lg ${k === 'Total com Adicional' ? 'bg-primary-50 font-bold' : 'bg-gray-50'}`}>
+              <span className="text-sm">{k}</span>
+              <span className="font-semibold">{v}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function HoraExtraNoturnaCalculator() {
   const [salary, setSalary] = useState(2500);
   const [hours, setHours] = useState(220);
@@ -908,6 +942,7 @@ const CALCULATORS: Record<string, React.FC> = {
   'dsr': DSRCalculator,
   'plr': PLRCalculator,
   'vale-transporte': ValeTransporteCalculator,
+  'transferencia': TransferenciaCalculator,
 };
 
 export default function ToolPage() {
