@@ -10,6 +10,7 @@ export default function Header() {
     { to: '/', label: 'Início' },
     { to: '/ferramentas', label: 'Calculadoras' },
     { to: '/guias', label: 'Guias' },
+    { to: '/blog', label: 'Blog' },
     { to: '/sobre', label: 'Sobre' },
     { to: '/contato', label: 'Contato' },
   ];

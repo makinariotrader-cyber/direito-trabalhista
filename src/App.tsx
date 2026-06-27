@@ -6,6 +6,8 @@ import Ferramentas from './pages/Ferramentas';
 import ToolPage from './components/ToolPage';
 import Guias from './pages/Guias';
 import GuiaPage from './pages/GuiaPage';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
 import Privacidade from './pages/Privacidade';
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="/ferramentas/:toolId" element={<ToolPage />} />
           <Route path="/guias" element={<Guias />} />
           <Route path="/guias/:guideId" element={<GuiaPage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/privacidade" element={<Privacidade />} />

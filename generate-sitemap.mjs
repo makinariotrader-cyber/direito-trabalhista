@@ -19,16 +19,27 @@ const guides = [
   'guia-fgts', 'passo-rescisao',
 ];
 
+const blogSlugs = [
+  'reforma-trabalhista-2025-mudancas',
+  'como-calcular-horas-extras-corretamente',
+  'direito-a-ferias-tudo-que-voce-precisa-saber',
+  'fgts-saques-regras-2025',
+  'seguro-desemprego-regras-2025-parcelas-valores',
+  'diferenca-adicional-periculosidade-insalubridade',
+];
+
 const pages = [
   { loc: '/', priority: '1.0' },
   { loc: '/ferramentas', priority: '0.9' },
   { loc: '/guias', priority: '0.8' },
+  { loc: '/blog', priority: '0.8' },
   { loc: '/sobre', priority: '0.5' },
   { loc: '/contato', priority: '0.4' },
   { loc: '/privacidade', priority: '0.3' },
   { loc: '/termos', priority: '0.3' },
   ...tools.map(id => ({ loc: `/ferramentas/${id}`, priority: '0.9' })),
   ...guides.map(id => ({ loc: `/guias/${id}`, priority: '0.7' })),
+  ...blogSlugs.map(slug => ({ loc: `/blog/${slug}`, priority: '0.7' })),
 ];
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
