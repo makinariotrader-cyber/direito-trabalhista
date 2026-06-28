@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "postbuild": "node generate-sitemap.mjs",
     "preview": "vite preview",
-    "agente": "node agente-redator.mjs"
+    "agente": "node agente-redator.mjs",
+    "build-blog": "node agente-redator.mjs && npm run build",
+    "publish-blog": "node agente-redator.mjs && npm run build && git add -A && git commit -m 'feat: novo post do blog' && git push"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -221,6 +221,59 @@ Para calcular automaticamente ambos os adicionais, utilize nossa calculadora de 
     metaDescription: 'Diferenças entre adicional de periculosidade (30% do salário) e insalubridade (10% a 40% do salário mínimo). Aprenda a calcular cada um conforme a CLT e NRs.',
     keywords: ['periculosidade', 'insalubridade', 'adicional de periculosidade', 'adicional de insalubridade', 'diferença periculosidade insalubridade'],
   },
+    {
+    id: 'intervalo-intrajornada-e-interjornada-entenda-as-regras-da-clt',
+    slug: 'intervalo-intrajornada-e-interjornada-entenda-as-regras-da-clt',
+    title: 'Intervalo Intrajornada e Interjornada: Entenda as Regras da CLT',
+    excerpt: 'Aprenda sobre os intervalos intrajornada e interjornada previstos na CLT e suas implicações para trabalhadores e empregadores.',
+    content: `A Consolidação das Leis do Trabalho (CLT) estabelece regras claras sobre os intervalos intrajornada e interjornada, que são fundamentais para a saúde e segurança do trabalhador. Segundo o artigo 71 da CLT, todo empregado tem direito a um intervalo para descanso de no mínimo uma hora quando a jornada ultrapassa seis horas diárias. Esse intervalo não é computado na jornada de trabalho, sendo essencial para garantir que o trabalhador tenha um tempo adequado para se alimentar e relaxar. 
+
+Além disso, o artigo 58 da CLT menciona que a jornada de trabalho não deve exceder oito horas diárias e 44 horas semanais, o que reforça a importância de respeitar os intervalos. O não cumprimento dessas normas pode resultar em penalidades ao empregador e em reivindicações de horas extras pelos empregados. É vital que tanto trabalhadores quanto empregadores conheçam suas obrigações e direitos. 
+
+Para facilitar o entendimento sobre como esses intervalos impactam na remuneração, utilize a calculadora disponível em nosso site. Com ela, você pode simular diferentes cenários e compreender melhor seus direitos trabalhistas.`,
+    author: 'Agente Redator Automático',
+    date: '2026-06-28',
+    category: 'Jornada de Trabalho',
+    tags: ['Intervalo Intrajornada', 'Jornada de Trabalho', 'Direitos Trabalhistas'],
+    imageAlt: 'Intervalo Intrajornada e Interjornada: Entenda as Regras da CLT',
+    faq: [
+      { question: 'O que é intervalo intrajornada?', answer: 'O intervalo intrajornada é o tempo destinado ao descanso e alimentação do trabalhador durante a jornada de trabalho, previsto no artigo 71 da CLT.' },
+      { question: 'Qual a diferença entre intervalo intrajornada e interjornada?', answer: 'O intervalo intrajornada ocorre dentro da jornada de trabalho, enquanto o interjornada é o período entre o final de uma jornada e o início da próxima, regulado pelo artigo 66 da CLT.' },
+      { question: 'Quais são as consequências do não cumprimento dos intervalos?', answer: 'O não cumprimento dos intervalos pode levar a ações trabalhistas, onde o trabalhador pode reivindicar horas extras e o empregador pode enfrentar multas e penalidades.' }
+    ],
+    interlinks: [
+      { text: 'Calculadora de Horas Extras', to: '/ferramentas/horas-extras' },
+      { text: 'Calculadora de Adicional Noturno', to: '/ferramentas/adicional-noturno' },
+      { text: 'Guia Completo do FGTS', to: '/guias/guia-fgts' }
+    ],
+    metaDescription: 'Entenda as regras dos intervalos intrajornada e interjornada conforme a CLT e como isso afeta sua jornada de trabalho.',
+    keywords: ['intervalo intrajornada', 'jornada de trabalho', 'direitos trabalhistas'],
+  },
+    {
+    id: "intervalo-intrajornada-e-interjornada-regras-da-clt",
+    slug: "intervalo-intrajornada-e-interjornada-regras-da-clt",
+    title: "Intervalo Intrajornada e Interjornada: Regras da CLT",
+    excerpt: "Entenda as regras dos intervalos intrajornada e interjornada segundo a CLT.",
+    content: "Os intervalos intrajornada e interjornada são fundamentais para a saúde e bem-estar do trabalhador, conforme estabelece a Consolidação das Leis do Trabalho (CLT). O artigo 71 da CLT determina que, para jornadas superiores a seis horas, é obrigatório um intervalo de no mínimo uma hora para repouso ou alimentação. Esse intervalo não pode ser inferior a 15 minutos, caso a jornada seja de quatro a seis horas. A falta de concessão desse intervalo pode gerar a obrigação de pagamento de horas extras, conforme previsto no § 4º do mesmo artigo.\n\nJá o intervalo interjornada, que é o tempo de descanso entre uma jornada de trabalho e outra, deve ser de, no mínimo, 11 horas consecutivas, conforme o artigo 66 da CLT. Essa norma visa garantir que o trabalhador tenha um tempo adequado para descansar e se recuperar. Além disso, a não observância dessa regra também pode resultar em penalidades para o empregador, incluindo o pagamento de horas extras ao trabalhador.\n\nÉ importante destacar que a Constituição Federal, em seu artigo 7º, inciso XVI, reforça o direito ao descanso, estabelecendo que é dever do empregador assegurar condições de trabalho que respeitem a saúde do trabalhador. Para garantir que esses direitos sejam cumpridos, recomenda-se o uso de ferramentas como a Calculadora Trabalhista, que pode ajudar a calcular o valor devido em caso de descumprimento dessas normas.",
+    author: "Agente Redator Automático",
+    date: "2026-06-28",
+    category: "Jornada de Trabalho",
+    tags: ["jornada de trabalho", "direitos trabalhistas", "intervalos"],
+    imageAlt: "Intervalo Intrajornada e Interjornada: Regras da CLT",
+    faq: [
+      { question: "Qual a duração do intervalo intrajornada?", answer: "O intervalo intrajornada para jornadas superiores a 6 horas deve ser de no mínimo 1 hora, conforme o artigo 71 da CLT." },
+      { question: "O que acontece se o intervalo não for concedido?", answer: "Se o intervalo intrajornada não for concedido, o empregador deve pagar o equivalente ao período como hora extra, conforme o § 4º do artigo 71 da CLT." },
+      { question: "Qual é o intervalo interjornada mínimo?", answer: "O intervalo interjornada deve ser de no mínimo 11 horas consecutivas, de acordo com o artigo 66 da CLT." }
+    ],
+    interlinks: [
+      { text: "Calculadora de FGTS", to: "/ferramentas/fgts" },
+      { text: "Calculadora de Rescisão Trabalhista", to: "/ferramentas/rescisao-trabalhista" },
+      { text: "Guia: CLT vs PJ", to: "/guias/diferencas-clt-pj" }
+    ],
+    metaDescription: "Saiba tudo sobre os intervalos intrajornada e interjornada segundo a CLT e como isso impacta os direitos do trabalhador.",
+    keywords: ["intervalo intrajornada", "intervalo interjornada", "direitos trabalhistas"],
+  },
+  // GENERATED_POSTS_MARKER
 ];
 
 export const blogCategories = [

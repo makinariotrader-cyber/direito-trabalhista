@@ -24,6 +24,26 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// ── Carregar .env automaticamente ──
+const envPath = resolve(__dirname, '.env');
+if (existsSync(envPath)) {
+  const envContent = readFileSync(envPath, 'utf-8');
+  for (const line of envContent.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#') || !trimmed.includes('=')) continue;
+    const eqIdx = trimmed.indexOf('=');
+    const key = trimmed.slice(0, eqIdx).trim();
+    let val = trimmed.slice(eqIdx + 1).trim();
+    // Remover aspas simples/duplas se houver
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    if (!process.env[key]) {
+      process.env[key] = val;
+    }
+  }
+}
+
 // Configuração
 const MODEL = process.env.MODEL || 'google/gemini-2.0-flash-001';
 const SITE_URL = process.env.SITE_URL || 'https://www.calculadoratrabalhista.com.br';
@@ -134,33 +154,35 @@ TÓPICO: ${topic}
 CATEGORIA: ${category}
 
 REGRAS IMPORTANTES:
-1. O artigo deve ter 800 a 1000 caracteres no total (conteúdo principal, sem contar FAQ)
-2. Use APENAS dados reais e verificáveis de fontes oficiais brasileiras:
-   - CLT (Consolidação das Leis do Trabalho) - artigos específicos
-   - Constituição Federal - artigos específicos
+1. O conteudo principal deve ter NO MINIMO 800 caracteres e NO MAXIMO 1000 caracteres. conte com precisao. Artigos mais curtos serao rejeitados.
+2. Cada paragrafo deve ter no minimo 3 frases completas com dados concretos
+3. Use APENAS dados reais e verificaveis de fontes oficiais brasileiras:
+   - CLT (Consolidacao das Leis do Trabalho) - cite artigos especificos (ex: art. 71, art. 58)
+   - Constituicao Federal - artigos especificos (ex: art. 7, inciso XVI)
    - Leis federais (ex: Lei 8.036/1990, Lei 7.998/1990, Lei 12.506/2011)
-   - Normas Regulamentadoras (NR-15, NR-16) do Ministério do Trabalho
-   - Súmulas do TST (Tribunal Superior do Trabalho)
-   - Portarias interministeriais (valores de salário mínimo, teto INSS, etc.)
-   - Dados oficiais do IBGE, Caixa Econômica Federal, Ministério do Trabalho
-3. NÃO invente dados, valores ou prazos. Use parâmetros reais de 2025:
-   - Salário mínimo 2025: R$ 1.518,00
+   - Normas Regulamentadoras (NR-15, NR-16) do Ministerio do Trabalho
+   - Sumulas do TST (Tribunal Superior do Trabalho)
+   - Portarias interministeriais (valores de salario minimo, teto INSS, etc.)
+   - Dados oficiais da Caixa Economica Federal, Ministerio do Trabalho
+4. NAO invente dados, valores ou prazos. Use SOMENTE parametros reais de 2025:
+   - Salario minimo 2025: R$ 1.518,00
    - Teto INSS 2025: R$ 8.157,41
-4. Termine o artigo principal com uma chamada para usar a calculadora relacionada no site
-5. Crie 2 a 3 perguntas frequentes (FAQ) sobre o tema com respostas completas
-6. Gere 3 tags relevantes para o artigo
+5. Termine o artigo principal com uma chamada para usar a calculadora relacionada no site
+6. Crie 3 perguntas frequentes (FAQ) sobre o tema com respostas completas
+7. Gere 3 tags relevantes para o artigo
 
-Formato de saída (JSON puro, sem markdown):
+Formato de saida (JSON puro, sem markdown):
 {
-  "title": "Título do artigo (SEO-friendly, máximo 65 caracteres)",
-  "excerpt": "Resumo do artigo (máximo 160 caracteres)",
-  "content": "Conteúdo completo do artigo (800 a 1000 caracteres, parágrafos separados por \\n\\n, com dados de fontes oficiais e links para calculadoras quando mencionar cálculos)",
+  "title": "Titulo do artigo (SEO-friendly, maximo 65 caracteres)",
+  "excerpt": "Resumo do artigo (maximo 160 caracteres)",
+  "content": "Conteudo completo do artigo (MINIMO 800 caracteres, MAXIMO 1000 caracteres, paragrafos separados por \\n\\n, com dados de fontes oficiais CITANDO artigos de lei e valores de 2025)",
   "faq": [
     { "question": "Pergunta 1?", "answer": "Resposta completa da pergunta 1" },
-    { "question": "Pergunta 2?", "answer": "Resposta completa da pergunta 2" }
+    { "question": "Pergunta 2?", "answer": "Resposta completa da pergunta 2" },
+    { "question": "Pergunta 3?", "answer": "Resposta completa da pergunta 3" }
   ],
   "tags": ["tag1", "tag2", "tag3"],
-  "metaDescription": "Meta description para SEO (máximo 160 caracteres)",
+  "metaDescription": "Meta description para SEO (maximo 160 caracteres)",
   "keywords": ["palavra-chave 1", "palavra-chave 2", "palavra-chave 3"]
 }`;
 
@@ -274,6 +296,52 @@ function savePost(post) {
   return { filePath, totalPosts: allPosts.length };
 }
 
+function integrateIntoBlogData(post) {
+  const blogDataPath = resolve(__dirname, 'src', 'blogData.ts');
+  let blogDataContent = readFileSync(blogDataPath, 'utf-8');
+
+  // Verificar se o post já existe (pelo slug)
+  if (blogDataContent.includes(JSON.stringify(post.slug))) {
+    console.log(`ℹ️  Post "${post.slug}" já existe no blogData.ts — pulando integração`);
+    return false;
+  }
+
+  // Usar JSON.stringify para escapar todo conteúdo com segurança
+  const postEntry = `  {
+    id: ${JSON.stringify(post.id)},
+    slug: ${JSON.stringify(post.slug)},
+    title: ${JSON.stringify(post.title)},
+    excerpt: ${JSON.stringify(post.excerpt)},
+    content: ${JSON.stringify(post.content)},
+    author: ${JSON.stringify(post.author)},
+    date: ${JSON.stringify(post.date)},
+    category: ${JSON.stringify(post.category)},
+    tags: [${post.tags.map(t => JSON.stringify(t)).join(', ')}],
+    imageAlt: ${JSON.stringify(post.imageAlt)},
+    faq: [
+${post.faq.map(f => `      { question: ${JSON.stringify(f.question)}, answer: ${JSON.stringify(f.answer)} }`).join(',\n')}
+    ],
+    interlinks: [
+${post.interlinks.map(i => `      { text: ${JSON.stringify(i.text)}, to: ${JSON.stringify(i.to)} }`).join(',\n')}
+    ],
+    metaDescription: ${JSON.stringify(post.metaDescription)},
+    keywords: [${post.keywords.map(k => JSON.stringify(k)).join(', ')}],
+  },`;
+
+  // Sempre inserir antes do marker (que fica no final do array)
+  const marker = '// GENERATED_POSTS_MARKER';
+  if (blogDataContent.includes(marker)) {
+    blogDataContent = blogDataContent.replace(marker, postEntry + '\n  ' + marker);
+  } else {
+    // Fallback: inserir antes do fechamento do array
+    blogDataContent = blogDataContent.replace('];', postEntry + '\n];');
+  }
+
+  writeFileSync(blogDataPath, blogDataContent, 'utf-8');
+  console.log(`✅ Post integrado ao blogData.ts: ${post.title}`);
+  return true;
+}
+
 function printScheduleInstructions() {
   console.log('\n═══════════════════════════════════════════');
   console.log('  📅 AGENDAR PARA 3x POR SEMANA');
@@ -295,13 +363,14 @@ function printScheduleInstructions() {
   console.log('');
   console.log('  🔹 Manualmente:');
   console.log(`     cd ${__dirname}`);
-  console.log('     node agente-redator.mjs');
+  console.log('     npm run agente');
+  console.log('');
+  console.log('  🔹 Comando completo (gerar + integrar + build + push):');
+  console.log('     npm run publish-blog');
   console.log('');
   console.log('═══════════════════════════════════════════');
-  console.log('  📌 IMPORTANTE:');
-  console.log('  Após gerar posts, integre-os manualmente');
-  console.log('  ao arquivo src/blogData.ts ou crie um');
-  console.log('  script de integração automática.');
+  console.log('  ✅ Os posts gerados são INTEGRADOS');
+  console.log('  automaticamente ao blogData.ts!');
   console.log('═══════════════════════════════════════════');
 }
 
@@ -324,6 +393,13 @@ async function main() {
     console.log(`   FAQ: ${post.faq.length} perguntas`);
     console.log(`   Interlinks: ${post.interlinks.length} links`);
     console.log(`   Total de posts gerados: ${totalPosts}`);
+
+    // Integrar automaticamente ao blogData.ts
+    console.log('\n📝 Integrando ao site...');
+    const integrated = integrateIntoBlogData(post);
+    if (integrated) {
+      console.log('✅ Execute "npm run build" para gerar o build com o novo post.');
+    }
 
     printScheduleInstructions();
   } catch (error) {
