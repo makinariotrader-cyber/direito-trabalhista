@@ -81,6 +81,21 @@ const TOPICS = [
   'Direitos do trabalhador em caso de falência da empresa',
   'Horas in itinere: o tempo de deslocamento até o trabalho conta?',
   'Intervalo intrajornada e interjornada: regras da CLT',
+  'Teletrabalho e home office: direitos e deveres do trabalhador remoto (Lei 14.442/2022)',
+  'Licença-maternidade e licença-paternidade: regras, prazos e salário-maternidade',
+  'Assédio moral no trabalho: o que caracteriza e como denunciar',
+  'Equiparação salarial: quando é devida e como solicitar (art. 461 CLT e Súmula 6 do TST)',
+  'Desconto de faltas no trabalho: o que a CLT permite descontar do salário',
+  'Adicional de transferência: quando o empregador pode mudar seu local de trabalho',
+  'Décimo terceiro salário: cálculo passo a passo, prazos de pagamento e descontos',
+  'Demissão por justa causa: o que caracteriza e quais direitos o trabalhador perde',
+  'Trabalho noturno: regras da CLT, adicional noturno e redução da hora',
+  'Convenção coletiva vs acordo coletivo: diferenças, validade e o que prevalece',
+  'FGTS rescisório: cálculo correto da multa de 40% e 20% na demissão',
+  'Prazo prescricional trabalhista: até quando você pode reclamar seus direitos na Justiça',
+  'Gratificação de função e acúmulo de cargo: direitos e regras da CLT',
+  'Contrato de trabalho intermitente: como funciona na prática pela Lei 13.467/2017',
+  'Adicional noturno na jornada mista: cálculo em período diurno e noturno',
 ];
 
 // Ferramentas do site para interlinks
