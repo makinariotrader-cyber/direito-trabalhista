@@ -62,3 +62,13 @@
 [2026-06-28 12:47:46] ?? logs/ ?? run-agente.bat ?? run-agente.ps1
 [2026-06-28 12:47:46] Executando build...
 [2026-06-28 12:48:41] Build OK!
+[2026-06-28 12:48:53]    [GIT] [master 23ffd1f] feat(blog): post automatico 2026-06-28
+[2026-06-28 12:48:53]    [GIT]  3 files changed, 161 insertions(+)
+[2026-06-28 12:48:53]    [GIT]  create mode 100644 logs/agente.log
+[2026-06-28 12:48:53]    [GIT]  create mode 100644 run-agente.bat
+[2026-06-28 12:48:53]    [GIT]  create mode 100644 run-agente.ps1
+[2026-06-28 12:48:53] Enviando para GitHub...
+[2026-06-28 12:49:13]    [PUSH] To https://github.com/makinariotrader-cyber/direito-trabalhista.git
+[2026-06-28 12:49:13]    [PUSH]    78b38c0..23ffd1f  master -> master
+[2026-06-28 12:49:13] Deploy Vercel automatico acionado!
+[2026-06-28 12:49:13] ==================== FIM (sucesso) ====================

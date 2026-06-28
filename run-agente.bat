@@ -9,5 +9,5 @@ cd /d "D:\direito-trabalhista"
 REM Garantir diretorio de log
 if not exist "logs" mkdir "logs"
 
-REM Executar PowerShell script com log
-powershell -ExecutionPolicy Bypass -File "run-agente.ps1" >> "logs\agente.log" 2>&1
+REM Executar PowerShell script com log (Quiet: sem duplicacao de output)
+powershell -ExecutionPolicy Bypass -File "run-agente.ps1" -Quiet >> "logs\agente.log" 2>&1
