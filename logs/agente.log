@@ -1,0 +1,64 @@
+[2026-06-28 12:47:04] ==================== INICIO ====================
+[2026-06-28 12:47:04] Projeto: D:\direito-trabalhista
+[2026-06-28 12:47:04] Git pull...
+[2026-06-28 12:47:26]    From https://github.com/makinariotrader-cyber/direito-trabalhista
+[2026-06-28 12:47:30]     * branch            master     -> FETCH_HEAD
+[2026-06-28 12:47:33]    Already up to date.
+[2026-06-28 12:47:33] Executando agente redator...
+[2026-06-28 12:47:42]    -------------------------------------------
+[2026-06-28 12:47:42]      ?? AGENTE REDATOR - Calculadora Trabalhista
+[2026-06-28 12:47:42]    -------------------------------------------
+[2026-06-28 12:47:42]      Data: 28/06/2026
+[2026-06-28 12:47:42]      Hora: 12:47:34
+[2026-06-28 12:47:42]    -------------------------------------------
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]    ?? Gerando artigo sobre: Intervalo intrajornada e interjornada: regras da CLT...
+[2026-06-28 12:47:42]       Categoria: Jornada de Trabalho
+[2026-06-28 12:47:42]       Modelo: openai/gpt-4o-mini
+[2026-06-28 12:47:42]    ? Artigo salvo: D:\direito-trabalhista\src\generated-posts\intervalo-intrajornada-e-interjornada-regras-da-clt.json
+[2026-06-28 12:47:42]    ?? Index atualizado: 2 posts no total
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]    ? RESUMO:
+[2026-06-28 12:47:42]       Título: Intervalo Intrajornada e Interjornada: Regras da CLT
+[2026-06-28 12:47:42]       Categoria: Jornada de Trabalho
+[2026-06-28 12:47:42]       Tags: intervalo de trabalho, jornada de trabalho, direitos trabalhistas
+[2026-06-28 12:47:42]       FAQ: 3 perguntas
+[2026-06-28 12:47:42]       Interlinks: 3 links
+[2026-06-28 12:47:42]       Total de posts gerados: 2
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]    ?? Integrando ao site...
+[2026-06-28 12:47:42]    ??  Post "intervalo-intrajornada-e-interjornada-regras-da-clt" já existe no blogData.ts — pulando integração
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]    -------------------------------------------
+[2026-06-28 12:47:42]      ?? AGENDAR PARA 3x POR SEMANA
+[2026-06-28 12:47:42]    -------------------------------------------
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]      ?? Linux/Mac (crontab):
+[2026-06-28 12:47:42]         crontab -e
+[2026-06-28 12:47:42]         Adicione:
+[2026-06-28 12:47:42]         # Seg, Qua, Sex às 08:00
+[2026-06-28 12:47:42]         0 8 * * 1,3,5 cd D:\direito-trabalhista && /usr/local/bin/node agente-redator.mjs >> logs/agente.log 2>&1
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]      ?? Windows (Agendador de Tarefas):
+[2026-06-28 12:47:42]         1. Abra o Agendador de Tarefas
+[2026-06-28 12:47:42]         2. Criar Tarefa > Acionadores: Semanal (seg, qua, sex)
+[2026-06-28 12:47:42]         3. Ação: Iniciar programa
+[2026-06-28 12:47:42]            Programa: node.exe
+[2026-06-28 12:47:42]            Argumentos: agente-redator.mjs
+[2026-06-28 12:47:42]            Iniciar em: D:\direito-trabalhista
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]      ?? Manualmente:
+[2026-06-28 12:47:42]         cd D:\direito-trabalhista
+[2026-06-28 12:47:42]         npm run agente
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]      ?? Comando completo (gerar + integrar + build + push):
+[2026-06-28 12:47:42]         npm run publish-blog
+[2026-06-28 12:47:42]    
+[2026-06-28 12:47:42]    -------------------------------------------
+[2026-06-28 12:47:42]      ? Os posts gerados são INTEGRADOS
+[2026-06-28 12:47:42]      automaticamente ao blogData.ts!
+[2026-06-28 12:47:42]    -------------------------------------------
+[2026-06-28 12:47:46] Mudancas detectadas!
+[2026-06-28 12:47:46] ?? logs/ ?? run-agente.bat ?? run-agente.ps1
+[2026-06-28 12:47:46] Executando build...
+[2026-06-28 12:48:41] Build OK!
