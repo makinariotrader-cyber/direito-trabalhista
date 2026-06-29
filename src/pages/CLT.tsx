@@ -11,10 +11,6 @@ const categoryIcons: Record<string, React.ReactNode> = {
   'Contrato de Trabalho': <BookOpen className="w-5 h-5" />,
   'Rescisão Contratual': <FileText className="w-5 h-5" />,
   'Adicionais Salariais': <Zap className="w-5 h-5" />,
-  'Licenças e Afastamentos': <Heart className="w-5 h-5" />,
-  'Segurança e Saúde': <Shield className="w-5 h-5" />,
-  'Proteção à Mulher Trabalhadora': <Heart className="w-5 h-5" />,
-  'Menor Aprendiz': <UserCheck className="w-5 h-5" />,
 };
 
 export default function CLT() {
