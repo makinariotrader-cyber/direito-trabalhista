@@ -34,13 +34,23 @@ export default function Footer() {
           </div>
 
           <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Legislação</h3>
+            <ul className="space-y-2">
+              <li><Link to="/clt" className="text-sm hover:text-primary-400 transition-colors">Direitos CLT</Link></li>
+              <li><Link to="/sumulas" className="text-sm hover:text-primary-400 transition-colors">Súmulas do TST</Link></li>
+              <li><Link to="/jurisprudencia" className="text-sm hover:text-primary-400 transition-colors">Jurisprudência</Link></li>
+              <li><Link to="/ojs" className="text-sm hover:text-primary-400 transition-colors">Orientações Jurisprudenciais</Link></li>
+              <li><Link to="/guias" className="text-sm hover:text-primary-400 transition-colors">Guias e Artigos</Link></li>
+            </ul>
+          </div>
+
+          <div>
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Links</h3>
             <ul className="space-y-2">
               <li><Link to="/sobre" className="text-sm hover:text-primary-400 transition-colors flex items-center gap-2"><Shield className="w-3.5 h-3.5" /> Sobre Nós</Link></li>
               <li><Link to="/contato" className="text-sm hover:text-primary-400 transition-colors flex items-center gap-2"><Mail className="w-3.5 h-3.5" /> Contato</Link></li>
               <li><Link to="/privacidade" className="text-sm hover:text-primary-400 transition-colors">Política de Privacidade</Link></li>
               <li><Link to="/termos" className="text-sm hover:text-primary-400 transition-colors">Termos de Uso</Link></li>
-              <li><Link to="/guias" className="text-sm hover:text-primary-400 transition-colors">Guias e Artigos</Link></li>
             </ul>
           </div>
         </div>
