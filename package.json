@@ -10,7 +10,14 @@
     "preview": "vite preview",
     "agente": "node agente-redator.mjs",
     "build-blog": "node agente-redator.mjs && npm run build",
-    "publish-blog": "node agente-redator.mjs && npm run build && git add -A && git commit -m 'feat: novo post do blog' && git push"
+    "publish-blog": "node agente-redator.mjs && npm run build && git add -A && git commit -m 'feat: novo post do blog' && git push",
+    "juridico": "node agente-juridico.mjs",
+    "juridico-tst": "node agente-juridico.mjs tst",
+    "juridico-stf": "node agente-juridico.mjs stf",
+    "juridico-planalto": "node agente-juridico.mjs planalto",
+    "juridico-relatorio": "node agente-juridico.mjs relatorio",
+    "juridico-dry-run": "node agente-juridico.mjs --dry-run",
+    "juridico-publish": "node agente-juridico.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

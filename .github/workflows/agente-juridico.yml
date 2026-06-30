@@ -1,0 +1,93 @@
+name: 🤖 Agente Jurídico - Monitor Legal Semanal
+
+on:
+  schedule:
+    # Toda segunda-feira às 06:00 BRT (09:00 UTC)
+    - cron: '0 9 * * 1'
+  # Permite execução manual pelo GitHub
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Apenas simular (dry run)'
+        type: boolean
+        default: false
+        required: false
+      fonte:
+        description: 'Fonte específica (tst, stf, planalto, ou vazio para todas)'
+        type: choice
+        options:
+          - 'all'
+          - 'tst'
+          - 'stf'
+          - 'planalto'
+        default: 'all'
+        required: false
+
+env:
+  SITE_URL: https://www.calculadoratrabalhista.com.br
+
+concurrency:
+  group: agente-juridico-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  monitorar:
+    name: 🔍 Verificar fontes legais
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: 🔧 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: 📦 Instalar dependências
+        run: npm ci
+
+      - name: ⚙️ Configurar git para push automático
+        run: |
+          git config user.name "🤖 Agente Jurídico"
+          git config user.email "agente-juridico@calculadoratrabalhista.com.br"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: 🏃 Executar agente jurídico
+        id: run-agent
+        run: node agente-juridico.mjs ${{ github.event.inputs.dry-run == 'true' && '--dry-run' || '' }} ${{ github.event.inputs.fonte || '' }}
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MODEL: google/gemini-2.0-flash-001
+
+      - name: 📝 Commitar estado e logs do agente
+        id: commit
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "feat: atualizacao juridica semanal - $(date '+%d/%m/%Y')" || echo "Nada a commitar"
+            echo "committed=true" >> $GITHUB_OUTPUT
+          else
+            echo "committed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 🚀 Push das alterações
+        if: steps.commit.outputs.committed == 'true'
+        run: git push
+
+      - name: 📊 Resumo da execução
+        if: always()
+        run: |
+          echo ""
+          echo "╔════════════════════════════════════════════════════╗"
+          echo "║  ✅ Agente Jurídico - Execução concluída          ║"
+          echo "╚════════════════════════════════════════════════════╝"
+          echo ""
+          echo "  Data: $(date '+%d/%m/%Y %H:%M')"
+          echo "  Repositório: ${{ github.repository }}"
+          echo "  Workflow: ${{ github.run_id }}"
